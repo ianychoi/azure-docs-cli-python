@@ -16,28 +16,28 @@ ms.assetid: 80ae9f6c-adb7-483c-bfb4-fbb958e075ba
 
 # Azure CLI 2.0
 
-The Azure CLI 2.0 is Azure's new command-line experience for managing Azure resources.  It can be used on macOS, Linux, and Windows. 
+Azure CLI 2.0은 Azure 자원을 관리하기 위한 새로운 명령어 라인 경험을 제공합니다. macOS, Linux, 그리고 Windows에서 사용 가능합니다.
 
-Azure CLI 2.0 is optimized for managing and administering Azure resources from the command line, and for building automation scripts that work against the Azure Resource Manager. Using the Azure CLI 2.0, you can create VMs within Azure as easily as typing the following command:
+Azure CLI 2.0은 명령어 라인에서 Azure 자원 관리 및 Azure 리소스 관리자에 대한 작업을 자동화하는 스크립트를 만드는데 최적화되어 있습니다. Azure CLI 2.0을 사용하면 다음 명령어를 입력하여 Azure 내 가상 컴퓨터를 쉽게 생성할 수 있습니다:
 
 ```azurecli
 az vm create -n MyLinuxVM -g MyResourceGroup --image UbuntuLTS
 ```
 
-Review the [Install article](install-azure-cli.md) to get Azure CLI 2.0 up and running on your system. Then read the [Get Started](get-started-with-azure-cli.md) article to begin using it.
-For information about the latest release, see the [release notes](release-notes-azure-cli.md).
+[Install article](install-azure-cli.md) 를 살펴보고 Azure CLI 2.0를 가져와 시스템에 실행하십시오. 그리고 나서, 사용해 보기 위해 [Get Started](get-started-with-azure-cli.md) 게시글을 읽어 봅니다.
+최신 릴리즈에 대한 정보는, [release notes](release-notes-azure-cli.md)를 살펴봅니다.
 
-The following samples can help you learn how to perform common scenarios with Azure CLI 2.0:
+다음 예제는 Azure CLI 2.0을 기반으로 하는 일반적인 시나리오를 학습할 수 있도록 도와줄 것입니다:
 - [Linux Virtual Machines](/azure/virtual-machines/virtual-machines-linux-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json)
 - [Windows Virtual Machines](/azure/virtual-machines/virtual-machines-windows-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json)
 - [Web Apps](/azure/app-service-web/app-service-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json)
 - [SQL Database](/azure/sql-database/sql-database-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json)
 
-A detailed [reference](/cli/azure/) is also available that documents how to use each individual Azure CLI 2.0 command.
+개별 Azure CLI 2.0 명령어를 사용하는 방법을 문서화한 자세한 [레퍼런스](/cli/azure/) 또한 확인 가능합니다.
 
-[Get started](get-started-with-azure-cli.md) with Azure CLI 2.0 now.
+Azure CLI 2.0을 지금 [시작해 보세요](get-started-with-azure-cli.md).
 
 
 > [!NOTE]
-> If you use the previous version of the CLI (Azure CLI), you can continue to use it.
-> If you use both CLIs, remember that `azure` is the old CLI - Azure CLI, and that `az` is the new CLI - Azure CLI 2.0. 
+> 이전 버전의 CLI (Azure CLI)를 사용하는 경우, 해당 버전을 계속해서 사용 가능합니다.
+> 두 CLI를 사용하는 경우 `azure` 는 이전 CLI - Azure CLI 이며, `az` 는 새로운 CLI인 Azure CLI 2.0 임을 기억합니다.
