@@ -14,64 +14,64 @@ ms.service: multiple
 ms.assetid: 85c418a8-6177-4833-bb8d-ff4ce2233c1a
 ---
 
-# Get started with Azure CLI 2.0
+# Azure CLI 2.0와 함께 시작해보기
 
-The Azure CLI 2.0 is Azure's new command line experience for managing Azure resources.
-It can be used on macOS, Linux, and Windows. 
+Azure CLI 2.0은 Azure 자원을 관리하기 위한 새로운 명령어 라인 경험을 제공합니다. macOS, Linux, 그리고 Windows에서 사용 가능합니다.
 
-Azure CLI 2.0 is optimized for managing and administering Azure resources from the command line,
-and for building automation scripts that work against the Azure Resource Manager.
-This article helps get you started using it, and teaches you the core concepts behind it.
+Azure CLI 2.0은 명령어 라인에서 Azure 자원 관리 및 Azure 리소스 관리자에 대한 작
+업을 자동화하는 스크립트를 만드는데 최적화되어 있습니다.
 
-For information about the latest release, see the [release notes](release-notes-azure-cli.md).
+이 글에서는 시작해 보는 것을 도와주며, 내부적인 핵심 개념을 가르쳐줄 것입니다.
 
-## Install Azure CLI
+최신 릴리즈에 대한 정보는, [릴리즈 노트](release-notes-azure-cli.md) 를 살펴봅니다.
 
-The first step is to make sure you have the latest version of the Azure CLI installed:
+## Azure CLI 설치
 
-1. [Install Azure CLI 2.0](install-azure-cli.md)
-on whatever platform you use.
+첫 단계에서는 최신 버전의 Azure CLI를 설치하였는가를 살펴보는 것입니다:
 
-2. To verify the installation was successful, run `az --version` from your command line. 
+1. [Azure CLI 2.0 설치](install-azure-cli.md)
+플랫폼은 사용하는 어떤 것이든 관계없습니다.
 
-You should see the version number of Azure CLI and other dependent libraries installed on your computer.  
-  
-If you get an error, there was likely a problem installing the CLI. Review the "Installation Troubleshooting" section of [Azure CLI 2.0 installation article](install-azure-cli.md#troubleshooting) 
-for guidance, or post a comment in the discussion at the bottom of that page for help.
+2. 설치가 성공적이었는지를 검증하기 위해, 명령어 라인에서 `az --version` 를 실행합니다.
 
-## Log in to Azure
+Azure CLI 및 대상 컴퓨터에 설치된 다른 의존성 라이브러리 버전 번호를 살펴볼 수 있을 것입니다.
 
-Now that you have the Azure CLI 2.0 installed, your next step will be to securely connect it with your Azure account. Use the `az login` command to do this.
+오류가 발생한 경우, CLI를 설치하면서 문제가 발생했을 가능성이 높습니다. [Azure CLI 2.0 설치 글](install-azure-cli.md#troubleshooting) 에서 "설치 트러블슈팅" 섹션을 살펴보거나,
+도움을 위해 페이지 하단에 있는 토론에서 댓글을 게시합니다.
 
-1. Run the following command from the command line.
+## Azure에 로그인
+
+이제 Azure CLI 2.0이 설치되어 있는 상황에서, 다음 단계로는 Azure 계정을 사용하여 안전하게 연결하는 것입니다. 이를 위해서는 `az login` 명령어를 사용합니다.
+
+1. 다음 명령어를 명령어 라인에서 실행합니다.
 
    ```azurecli
    az login
    ```
    
-   This command will output a code to use in the next step. 
+   다음 단계에서 사용할 코드가 출력될 것입니다.
 
-2. Use a web browser to open the page [https://aka.ms/devicelogin](https://aka.ms/devicelogin) and enter the code.
+2. 웹 브라우저를 사용하여 [https://aka.ms/devicelogin](https://aka.ms/devicelogin) 페이지를 연 후 해당 코드를 입력합니다.
   
-3. At the prompt, log in using your Azure credentials.
+3. 프롬프트에서 Azure 자격증명을 사용한 로그인이 이루어집니다.
 
-Now you can run commands from the Azure CLI 2.0 on the Azure resources and services available to your account.
+이제 여러분 계정에서 사용 가능한 Azure 자원 및 서비스에 대해 Azure CLI 2.0에서 명령어 실행이 가능합니다.
 
-## Create a Resource Group
+## 리소스 그룹 생성
 
-Now that we've got everything set up, let's use the Azure CLI to create resources within Azure.
+이제 모든 것이 셋업되었으므로, Azure CLI 를 사용하여 Azure 내 자원을 생성해 봅시다.
 
-First, create a Resource Group.  Resource Groups in Azure provide a way to manage multiple resources that you 
-want to logically group together.  For example, you might create a Resource Group for an application or project
-and add a virtual machine, a database and a CDN service within it.
+먼저, 리소스 그룹을 생성해 봅시다. Azure에서 리소스 그룹은 논리적으로 서로 묶고자 하는 여러 자원을 관리하는 방법을
+제공합니다. 예를 들어, 특정 어플리케이션 또는 프로젝트에 대한  리소스 그룹을 생성하여
+가상 컴퓨터, 데이터베이스 및 내부에 CDN 서비스를 생성할 수 있습니다.
 
-Let's create a resource group named "MyResourceGroup" in the *westus2* region of Azure.  To do so type the following command:
+Azure에서 *westus2* 지역에 "MyResourceGroup" 이름으로 리소스 그룹을 생성해 봅시다. 이를 위해 다음 명령어를 입력합니다:
 
 ```azurecli
 az group create -n MyResourceGroup -l westus2 
 ```
 
-Once the resource group has been created, the `az group create` command outputs several properties of the newly created resource:
+리소스 그룹이 생성된 이후, `az group create` 명령어는 새로 생성된 자원에 대한 몇몇 속성을 출력할 것입니다:
 
 ```Output
 {
@@ -86,23 +86,23 @@ Once the resource group has been created, the `az group create` command outputs 
 }
 ```
 
-## Create a Linux Virtual Machine
+## Linux 가상 컴퓨터 생성하기
 
-Now that we have our resource group, let's create a Linux VM within it.
+이제 리소스 그룹이 있는 상황에서, 해당 리소스 그룹 내 Linux VM을 생성해 봅시다.
 
-You can create a Linux VM using the popular UbuntuTLS image, with two attached storage disks of 10GB and 20GB, with the following command:
+다음 명령어를 사용하여 10GB 및 20GB 2개의 스토리지 디스크를 연결하여 대중적인 UbuntuLTS 이미지를 사용해 Linux VM을 생성할 수 있습니다:
 
 ```azurecli
 az vm create -n MyLinuxVM -g MyResourceGroup --image UbuntuLTS --data-disk-sizes-gb 10 20
 ```
 
-When you run the preceding command, the Azure CLI 2.0 looks for an SSH key pair stored under your ~/.ssh directory.  If you don't already have an SSH key pair stored there, you can ask the Azure CLI to automatically create one for you by passing the --generate-ssh-keys parameter:
+해당 명령어를 실행하면, Azure CLI 2.0는 ~/.ssh 디렉토리 내 저장된 SSH 키페어를 찾습니다. SSH 키페어를 아직 저장하지 않은 경우에는, Azure CLI가 자동으로 생성하도록 요청하기 위해 --generate-ssh-keys 매개변수를 전달할 수 있습니다:
 
 ```azurecli
 az vm create -n MyLinuxVM -g MyResourceGroup --image UbuntuLTS --generate-ssh-keys
 ```
 
-The `az vm create` command returns output once the VM has been fully created and is ready to be accessed and used. The output includes several properties of the newly created VM including its public IP address:
+`az vm create` 명령어는 VM이 완전히 생성된 후 액세스 및 사용 준비가 되었을 때 출력을 반환합니다. 출력에는 공용 IP 주소를 포함하여 새로 생성된 VM에 대한 몇 가지 속성을 포함합니다.
 
 ```Output
 {
@@ -117,7 +117,7 @@ The `az vm create` command returns output once the VM has been fully created and
 }
 ```
 
-Now that the VM has been created, you can log on to your new Linux VM using **SSH** with the public IP address of the VM you created:
+이제 VM이 생성되었습니다. 생성한 VM에 대한 공용 IP 주소를 가지고 **SSH** 를 사용해 새로운 Linux VM에 로그인할 수 있습니다.
 
 ```azurecli
 ssh xx.xxx.xxx.xxx
@@ -154,20 +154,20 @@ applicable law.
 my-login@MyLinuxVM:~$
 ```
 
-## Create a Windows Server Virtual Machine
+## Windows Server 가상 컴퓨터 생성하기
 
-Let's now create a Windows Server 2016 Datacenter based VM using the `az vm create` command and add it to the same "MyResourceGroup" resource group that we used for our Linux VM.  Like the Linux VM example we'll also attach two storage disks using the `--data-disk-sizes-gb` parameter.
+이제 `az vm create` 명령어를 사용해 Windows Server 2016 Datacenter 기반 VM을 생성한 후, Linux VM에서 사용했던 "MyResourceGroup" 리소스 그룹에 추가해 봅시다. Linux VM 예제에서와 같이 `--data-disk-sizes-gb` 매개변수를 사용하여 2개의 스토리지 디스크를 연결할 것입니다.
 
-Azure requires that you avoid using easily guessed usernames/passwords. There are specific rules for what characters can be used as well as the minimum length of both username and password.  
+Azure는 쉽게 추측 가능한 사용자 이름 / 암호를 사용하지 않는 것을 요구 사항으로 하고 있습니다. 사용자 이름 및 암호 모두에 대한 최소 길이 뿐만 아니라 어떤 문자를 사용해야 하는지에 대한 구체적인 규칙이 있습니다.
 
 > [!NOTE]
-> You will be prompted to enter your username and password when running this command.
+> 해당 명령어를 실행할 때 사용자 이름 및 암호를 입력하는 프롬프트가 나타날 것입니다.
 
 ```azurecli
 az vm create -n MyWinVM -g MyResourceGroup --image Win2016Datacenter
 ```
 
-The `az vm create` command output results once the VM has been fully created and is ready to be accessed and used.
+해당 VM이 완전히 생성된 후 액세스 및 사용 준비가 된 이후 `az vm create` 명령어 출력 결과가 보일 것입니다.
 
 ```Output
 {
@@ -182,98 +182,98 @@ The `az vm create` command output results once the VM has been fully created and
 }
 ```
 
-Now log on to your newly created Windows Server VM using Remote Desktop and the public IP address of the VM (which is returned in the output from `az vm create`).  
-If you are on a Windows-based system, you can do this from the command line using the `mstsc` command:
+이제 새로 생성한 Windows Server VM 에 원격 데스크탑 및 (`az vm create` 출력으로 반환된) VM 공용 IP 주소를 사용하여 로그인합니다.
+Windows 기반 시스템인 경우, `mstsc` 명령어를 사용하여 명령어 라인에서 실행할 수 있습니다:
 
 ```azurecli
 mstsc /v:xx.xxx.xx.xxx
 ```
 
-Supply the same username/password combination you used when creating the VM to log in.
+VM 생성에서 사용하였던 사용자 이름 / 암호 조합을 동일하게 제공하여 로그인을 합니다.
 
-## Creating other resources in Azure
+## Azure에서 다른 리소스 생성하기
 
-We've now walked through how to create a Resource Group, a Linux VM, and a Windows Server VM. You can create many other types of Azure resources as well.  
+지금까지 리소스 그룹, Linux VM, 그리고 Windows Server VM을 생성하는 방법을 살펴보았습니다. Azure 리소스 중 많은 다른 유형 또한 생성 가능합니다.
 
-All new resources are created using a consistent `az <resource type name> create` naming pattern.  For example, to create an Azure Network Load Balancer that we could then associate with our newly created VMs, we can use the following create command:
+모든 새로운 리소스는 일관성있게 `az <resource type name> create` 이름 패턴을 사용하여 생성이 이루어집니다. 예를 들어, 새로 생성된 VM에 연결할 Azure 네트워크 로드 밸런서를 생성하기 위해서는 다음 생성 명령어를 사용 가능합니다:
 
 ```azurecli
 az network lb create -n MyLoadBalancer -g MyResourceGroup
 ```
 
-We could also create a new private Virtual Network (commonly referred to as a "VNet" within Azure) for our infrastructure using the following create command:
+개인 가상 네트워크 (Azure 내에서는 일반적으로 "VNet" 으로 일컫음)를 다음 생성 명령어를 사용하여 인프라에 새로 생성할 수 있습니다:
 
 ```azurecli
 az network vnet create -n MyVirtualNetwork -g MyResourceGroup --address-prefix 10.0.0.0/16
 ```
 
-What makes Azure and the Azure CLI powerful is that we can use it not just to get cloud-based infrastructure but also to
-create managed platform services.  The managed platform services can also be combined with infrastructure to build even more powerful solutions.
+Azure 및 Azure CLI를 강력하게 만드는 요소는 클라우드 기반 인프라를 얻기 위해 사용할 수 있다는 것 뿐만 아니라
+관리 플랫폼 서비스를 생성하기 위해 사용할 수 있다는 것입니다. 관리 플랫폼 서비스는 또한 인프라와 결합하여 보다 강력한 솔루션을 만들 수 있습니다.
 
-For example, you can use the Azure CLI to create an Azure AppService.  Azure AppService is a managed platform service that provides a great way to host web apps without having to worry about infrastructure.  After creating the Azure AppService, you can create two new Azure Web Apps within the AppService using the following create commands:
+예를 들어, Azure CLI를 사용하여 Azure AppService를 생성할 수 있습니다. Azure AppService는 인프라에 대한 걱정을 하지 않고 웹앱을 호스트하는 훌륭한 방법을 제공하는 관리 플랫폼 서비스입니다. Azure AppService를 생성한 다음에는, 다음 생성 명령어를 사용하여 AppService 내 두 개의 Azure Web App을 새로 생성할 수 있습니다:
 
 ```azurecli
-# Create an Azure AppService that we can host any number of web apps within
+# 내부에 임의의 개수에 대한 web app을 호스트 가능한 Azure AppService를 생성합니다
 az appservice plan create -n MyAppServicePlan -g MyResourceGroup
 
-# Create Two Web Apps within the AppService (note: name param must be a unique DNS entry)
+# AppService 내 2개의 Web App을 생성합니다 (노트: name param은 유일한 DNS 항목이어야 합니다)
 az appservice web create -n MyWebApp43432 -g MyResourceGroup --plan MyAppServicePlan 
 az appservice web create -n MyWebApp43433 -g MyResourceGroup --plan MyAppServicePlan 
 ```
 
-Once you understand the basics of the `az <resource type name> create` pattern, it becomes easy to create anything. Following are 
-some popular Azure resource types and the corresponding Azure CLI create commands to create them:
+`az <resource type name> create` 패턴에 대한 기본을 이해한 다음에는, 임의의 리소스를 생성하는 것이 쉬워졌을 것입니다. 다음은
+몇몇 대중적인 Azure 리소스 유형 및 각 유형을 생성하는데 대응하는 Azure CLI 생성 명령어입니다:
 
 ```
-Resource Type               Azure CLI create command
+리소스 유형                 Azure CLI 생성 명령어
 -------------               ------------------------
-Resource Group              az group create
-Virtual Machine             az vm create
-Virtual Network             az network vnet create
-Load Balancer               az network lb create
-Managed Disk                az disk create
-Storage account             az storage account create
-Virtual Machine Scale Set   az vmss create
-Azure Container Service     az acs create
+리소스 그룹                 az group create
+가상 컴퓨터                 az vm create
+가상 네트워크               az network vnet create
+로드 밸린서                 az network lb create
+관리 디스크                 az disk create
+스토리지 계정               az storage account create
+가상 컴퓨터 가용성 집합     az vmss create
+Azure 컨테이너 서비스       az acs create
 Web App                     az appservice web create
-SQL Database Server         az sql server create
+SQL 데이터베이스 서버       az sql server create
 Document DB                 az documentdb create
 ```
 
-Visit the [Reference documentation](/azure/doc-ref-autogen) to learn more about the additional resource-specific parameters that you can pass to each of the preceding commands and the resource types you can create. 
+[Reference documentation](/azure/doc-ref-autogen) 에 방문하여 각 선행되는 명령어와 생성하고자 하는 리소스 유형에 전달 가능한 부가적인 리소스에 특화된 매개변수에 대해 보다 자세히 학습합니다.
 
-## Useful tip: Optimizing create operations using --no-wait
+## 유용한 팁: --no-wait를 사용한 생성 동작 최적화
 
-By default when you create resources using the Azure CLI 2.0, the `az <resource type name> create` command waits until the 
-resource has been created and is ready for you to use.  For example, if you create a VM, the `az vm create` command will, by default,
-not return until the VM is created and is ready for you to SSH or RDP into it.
+디폴트로 Azure CLI 2.0을 사용하여 리소스를 생성할 때, `az <resource type name> create` 명령어는 해당 리소스가 생성되어
+사용 준비가 되었을 때까지 기다립니다. 예를 들어, VM을 생성하는 경우, `az vm create` 명령어는 디폴트로 해당 VM이 생성되고
+SSH 또는 RDP를 통해 접속 가능 준비가 될 때까지 반환되는 값이 없을 것입니다.
 
-We use this approach because it makes it easier to write automation scripts that contain multiple steps with dependencies (and need a prior task to have completed successfully before continuing).
+우리는 서로 의존성 (및 계속 진행하기 전 성공적으로 완료해야 하는 필요한 이전 단계)가 있는 여러 단계를 포함하는 자동화 스크립트를 작성하기 쉽게 해 주기 때문에 해당 접근 방식을 사용합니다.
 
-If you do not need to wait on creation of a resource before continuing, you can use the `no-wait` option to start 
-a create action in the background. You can continue using the CLI for other commands.
+계속 진행하기 전에 리소스 생성을 기다릴 필요가 없는 경우에는, `no-wait` 옵션을 사용하여 백그라운드에서 생성 단계를
+시작할 수 있습니다. 다른 명령어를 위해 CLI 사용이 계속 가능합니다.
 
-For example, the following usage of the `az vm create` starts a VM deployment and then return much more quickly (and before the VM
-has fully booted):
+예를 들어, `az vm create` 에 대한 다음 사용 예는 VM 배포를 시작한 다음에 결과값을 보다 매우 빠르게 (그리고 VM 이 완전히 부팅되기 이전에)
+반환합니다:
 
 ```azurecli
 az vm create -n MyLinuxVM2 -g MyResourceGroup --image UbuntuLTS --no-wait
 ```
 
-Using the `--no-wait` approach can help you optimize the performance of your automation scripts considerably.
+`--no-wait` 접근 방식을 사용하면 자동화 스크립트에 대한 성능을 대폭 최적화할 수 있도록 도와줍니다.
 
-## Listing resources and formatting output
+## 리소스 목록 보기 및 결과 포맷
 
-You can use the `list` command within the Azure CLI to find and list the resources running in Azure. 
+Azure CLI 내에서 `list` 명령어를 사용하여 Azure에서 실행하는 리소스를 찾아 목록을 살펴볼 수 있습니다.
 
-Like with the create command, you can list resources using the Azure CLI 2.0 using a common `az <resource type name> list` naming pattern that is consistent across all resource types.  There are various output formats and query options available to filter and sort the list of resources in the way you prefer to see them.
+생성 명령어처럼, 모든 리소스 유형에 걸쳐 공통적으로 일관된 `az <resource type name> list` 이름 패턴 및 Azure CLI 2.0을 사용하여 리소스 목록을 볼 수 있습니다. 보고자 하는 선호 방식에 따라 리소스 목록 결과를 필터링 및 정렬 가능한 출력 포맷 및 쿼리 옵션이 있습니다.
 
-For example, `az vm list` shows the list of all VMs you have.   
+예를 들어, `az vm list` 는 가지고 있는 모든 VM 목록을 보여줍니다.
 
 ```azurecli
 az vm list 
 ```
-The values returned are by default in JSON (only showing partial output for sake of brevity).
+반환되는 값은 디폴트로 JSON 입니다 (간단히 여기서는 출력 일부분만을 표시합니다).
 
 ```json
 [
@@ -303,7 +303,7 @@ The values returned are by default in JSON (only showing partial output for sake
 ]
 ```
 
-You can optionally modify the output format using the `--output` option.  Run the `az vm list` command to see both the Linux and Windows Server VMs created earlier, along with the most common properties of a VM, using the easy to read *table* format option:
+옵션으로 출력 포맷을 `--output` 옵션을 사용하여 변경할 수 있습니다. `az vm list` 명령어를 실행하여 이전에 생성한 Linux 및 Windows Server VM을 VM에 대한 가장 일반적인 속성과 함께 *table* 포맷 옵션으로 쉽게 읽을수 있도록 살펴봅니다.
 
 ```azurecli
 az vm list --output table
@@ -316,8 +316,8 @@ MyLinuxVM  MyResourceGroup  westus2
 MyWinVM    MyResourceGroup  westus2
 ```
 
-The *tsv* output option can be used to get a text-based, tab-separated format without any headers.  This format is useful when you 
-want to pipe the output into another text-based tool like grep. 
+*tsv* 출력 옵션은 임의의 헤더가 없는 텍스트 기반 및 탭으로 구분된 포맷을 얻기 위해 사용 가능합니다. 해당 포맷은 출력을
+grep와 같은 다른 텍스트 기반 도구에 파이프하고자 할 때 유용합니다.
 
 ```azurecli
 az vm list --output tsv
@@ -327,7 +327,7 @@ az vm list --output tsv
 None    None            /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyLinuxVM        None    None    westus2 MyLinuxVM                   None        Succeeded       MyResourceGroup None                    Microsoft.Compute/virtualMachines       XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 None    None            /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyWinVM  None    None    westus2 MyWinVM                 None    Succeeded       MyResourceGroup None                    Microsoft.Compute/virtualMachines       XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ```
-Visit the [output formats](format-output-azure-cli.md) article to learn more about the additional ways to list resources and format the output.
+리소스 목록 및 출력 포맷에 대한 부가적인 방법에 대해 알고 싶다면 [output formats](format-output-azure-cli.md) 게시물을 살펴봅니다.
 
 ## Querying resources and shaping outputs
 
