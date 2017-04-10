@@ -14,128 +14,128 @@ ms.service: multiple
 ms.assetid: ea5c0ee1-c530-4a1e-a83f-e1be71f6d416
 ---
 
-# Install Azure CLI 2.0
+# Azure CLI 2.0 설치
 
-Install the new version of the Azure CLI today!
-We've improved and updated it to provide a great native command-line experience for managing Azure resources.
-It can be used on macOS, Linux, and Windows.
-For information about the latest release, see the [release notes](release-notes-azure-cli.md).
+새로운 버전의 Azure CLI를 지금 설치해 봅시다!
+Azure 자원을 관리하기 위해 훌륭한 native 명령어 라인 경험을 제공하기 위해 개선 및 업데이트를 하였습니다.
+macOS, Linux, 그리고 Windows에서 사용 가능합니다.
+최신 릴리즈에 대한 자세한 정보는 [릴리즈 노트](release-notes-azure-cli.md) 를 살펴봅니다.
 
 > [!NOTE]
-> If you need the previous version of the Azure CLI, here's how to [install Azure 1.0](/azure/cli-install-nodejs).
+> 이전 버전의 Azure CLI를 필요로 하는 경우에는 [Azure 1.0 설치](/azure/cli-install-nodejs) 방법을 살펴봅니다.
 
 ## macOS
 
-1. Install Azure CLI 2.0 with one `curl` command.
+1. Azure CLI 2.0를 `curl` 명령어로 설치합니다.
 
    ```bash
    curl -L https://aka.ms/InstallAzureCli | bash
    ```
 
-2. You may have to restart your command shell for some changes to take effect.
+2. 명령어 쉘에 대한 몇몇 변경 사항을 적용하기 위해 재시작해야 할 것입니다.
 
    ```bash
    exec -l $SHELL
    ```
    
-3. Run Azure CLI 2.0 from the command prompt with the `az` command.
+3. 명령 프롬프트에서 `az` 명령어를 사용하여 Azure CLI 2.0를 실행합니다.
 
 > [!Note]
-> To uninstall, see the [manual uninstall instructions](#uninstall).
+> 제거하려면 [수동 제거 방법](#uninstall)을 살펴봅니다.
 
 ## Windows
 
-Get Azure CLI 2.0 on Windows using `pip`. 
+Windows에서는 `pip` 를 사용하여 Azure CLI 2.0을 가져옵니다.
 
-1. Visit the Python site and [download Python](https://www.python.org/downloads/) for Windows.
-   Be sure to install the Pip component when you install Python.
-   After the install completes, add Python to your PATH environment variable (the installer will prompt you).
+1. Python 사이트에 방문하여 Windows용 [Python 다운로드](https://www.python.org/downloads/) 를 수행합니다.
+   Python을 설치할 때 Pip 구성요소를 설치하는지를 확인합니다.
+   설치를 완료한 후에는, Python을 PATH 환경변수 (설치 관리자에서 나타날 것입니다)에 Python을 추가합니다.
 
-2. Check your Python installation from a command prompt.
+2. Python 설치를 명령 프롬프트에서 확인합니다.
 
    ```bash
    python --version
    ```
 
-3. Install Azure CLI 2.0 using `pip`.
+3. `pip` 를 사용하여 Azure CLI 2.0을 설치합니다.
 
    ```bash
    pip install --user azure-cli
    ```
 
    > [!NOTE]
-   > The CLI `az.bat` may be installed in `%USERPROFILE%\AppData\Roaming\Python\Scripts`
-   > or `%USERPROFILE%\AppData\Roaming\Python\PythonXY\Scripts`
-   > where `XY` is your Python version (for example, `%USERPROFILE%\AppData\Roaming\Python\Python27\Scripts`).
-   > Add the folder that contains `az.bat` to your path.
+   > CLI `az.bat` 는 `%USERPROFILE%\AppData\Roaming\Python\Scripts` 위치 또는
+   > `%USERPROFILE%\AppData\Roaming\Python\PythonXY\Scripts` 위치이며,
+   > `XY` 는 사용하는 Python 버전 (예를 들면, `%USERPROFILE%\AppData\Roaming\Python\Python27\Scripts`) 에 위치할 것입니다.
+   > `az.bat` 를 포함하는 폴더를 경로에 추가합니다.
    
-4. Run Azure CLI 2.0 from the command prompt with the 'az' command.
+4. 명령 프롬프트에서 `az` 명령어를 사용하여 Azure CLI 2.0를 실행합니다.
 
 ## Linux
 
-1. On Linux, you may need to install specific [prerequisites](#linux-prerequisites).
+1. Linux에서는 특정 [필수 사항](#linux-prerequisites) 을 설치해야 할 수도 있습니다.
 
-2. Install Azure CLI 2.0 with one `curl` command.
+2. Azure CLI 2.0를 `curl` 명령어로 설치합니다.
 
    ```bash
    curl -L https://aka.ms/InstallAzureCli | bash
    ```
 
-3. You may have to restart your command shell for some changes to take effect.
+3. 명령어 쉘에 대한 몇몇 변경 사항을 적용하기 위해 재시작해야 할 것입니다.
 
    ```bash
    exec -l $SHELL
    ```
 
-4. Run Azure CLI 2.0 from the command prompt with the `az` command.
+4. 명령 프롬프트에서 `az` 명령어를 사용하여 Azure CLI 2.0를 실행합니다.
 
 > [!Note]
-> To uninstall, see the [manual uninstall instructions](#uninstall).
+> 제거하려면 [수동 제거 방법](#uninstall)을 살펴봅니다.
 
 ## Docker
 
-We maintain a Docker image preconfigured with the Azure CLI.
+Azure CLI를 사전 구성한 Docker 이미지를 관리하고 있습니다.
 
-Install the Azure CLI using `docker run`.
+Azure CLI를 `docker run` 명령어를 사용하여 설치합니다.
 
 ```bash
 docker run azuresdk/azure-cli-python:<version>
 ```
 
-See our [Docker tags](https://hub.docker.com/r/azuresdk/azure-cli-python/tags/) for available versions.
+사용 가능한 버전에 대한 [Docker tags](https://hub.docker.com/r/azuresdk/azure-cli-python/tags/) 를 살펴봅니다.
 
 > [!NOTE]
-> If you want to pick up the SSH keys from your user environment,
-> you can use `-v ${HOME}:/root` to mount $HOME as `/root`.
+> 사용자 환경에 대한 SSH 키를 선택하고자 하는 경우,
+> `-v ${HOME}:/root` 를 사용하여 $HOME을 `/root` 로 마운트 가능합니다.
 >
 > ```bash
 > docker run -v ${HOME}:/root azuresdk/azure-cli-python:<version>
 > ```
 
-The Docker image does not support the [`component` feature](/cli/azure/component).
-To update the Azure CLI 2.0, use `docker run` to install the latest image, or the specific image that you want.
+Docker 이미지는 [`component` 기능](/cli/azure/component) 을 지원하지 않습니다.
+Azure CLI 2.0을 업데이트하려면, `docker run` 을 사용하여 최신 이미지 또는 원하는 특정 이미지를 설치합니다.
 
 ## apt-get
 
-For Debian/Ubuntu based systems, you can install Azure CLI 2.0 via `apt-get`.
+Debian/Ubuntu 기반 시스템에서는 `apt-get` 을 통해 Azure CLI 2.0을 설치할 수 있습니다.
 
-1. Modify your sources list.
+1. 소스 리스트를 수정합니다.
 
-   - 32-bit system
+   - 32비트 시스템
 
      ```bash
      echo "deb https://packages.microsoft.com/repos/azure-cli/ wheezy main" | \
           sudo tee /etc/apt/sources.list.d/azure-cli.list
      ```
 
-   - 64-bit system
+   - 64비트 시스템
 
      ```bash
      echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | \
           sudo tee /etc/apt/sources.list.d/azure-cli.list
      ```
 
-2. Run the following sudo commands:
+2. 다음 sudo 명령어를 실행합니다:
 
    ```bash
    sudo apt-key adv --keyserver packages.microsoft.com --recv-keys 417A0893
@@ -143,8 +143,8 @@ For Debian/Ubuntu based systems, you can install Azure CLI 2.0 via `apt-get`.
    sudo apt-get update && sudo apt-get install azure-cli
    ```
 
-When you install with apt-get, `az component` isn't supported.
-To update the CLI, use the following commands:
+apt-get을 통해 설치하는 경우, `az component` 를 지원하지 않습니다.
+CLI를 업데이트하려면, 다음 명령어를 사용합니다:
 
 ```bash
 sudo apt-get update && sudo apt-get install azure-cli
@@ -152,12 +152,12 @@ sudo apt-get update && sudo apt-get install azure-cli
 
 ## Linux Prerequisites
 
-1. If you don't have it, install [Python](https://www.python.org/downloads).
+1. [Python](https://www.python.org/downloads) 이 없다면, 설치합니다.
 
-2. Depending on your Linux distribution, install the prerequisites.
+2. Linux 배포판에 따라, 필수 사항을 설치합니다.
 
    ```
-   Platform              | Prerequisites
+   플랫폼                | 필수 사항
    ----------------------|---------------------------------------------
    Ubuntu 15.10 or 16.04 | sudo apt-get update && sudo apt-get install -y libssl-dev libffi-dev python-dev build-essential
    Ubuntu 12.04 or 14.04 | sudo apt-get update && sudo apt-get install -y libssl-dev libffi-dev python-dev
@@ -168,15 +168,15 @@ sudo apt-get update && sudo apt-get install azure-cli
    SUSE OpenSUSE 13.2    | sudo zypper refresh && sudo zypper --non-interactive install gcc libffi-devel python-devel openssl-devel
    ```
 
-## Troubleshooting
+## 문제 해결
 -------------------------------
 
-### Errors with curl redirection
+### curl 리디렉션 오류
 
-If you get an error from the `curl` command regarding the `-L` parameter, or an error saying "Object Moved", try using the full url instead of the aka.ms url:
+`-L` 매개변수에 관한 `curl` 명령어 오류, 또는 "Object Moved" 를 설명하는 오류를 반환한 경우, aka.ms 주소 대신 full url을 사용해 봅니다:
 
 ```
-# If you see this:
+# 다음 (메시지가) 보이는 경우:
 curl -L https://aka.ms/InstallAzureCli | bash
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
@@ -184,28 +184,27 @@ curl -L https://aka.ms/InstallAzureCli | bash
 bash: line 1: syntax error near unexpected token `<'
 'ash: line 1: `<html><head><title>Object moved</title></head><body>
 
-#### Try this instead:
+#### 대신 아래와 같이 시도합니다:
 curl https://azurecliprod.blob.core.windows.net/install | bash
 ```
 
 
-### Errors on install with `cffi` or cryptography
+### `cffi` 또는 암호와 관련된 설치 오류
 
-If you get errors on install on OS X, upgrade `pip`.
+OS X 설치에서 오류를 발견하는 경우에는 `pip` 를 업그레이드합니다.
 
 ```bash
 pip install --upgrade --force-reinstall pip
 ```
 
-If you get errors on install on **Debian** or **Ubuntu**, like these examples,
-install `libssl-dev` and `libffi-dev`.
+**Debian** 또는 **Ubuntu** 설치에서 오류를 발견한 경우에는 해당 예제와 같이 `libssl-dev` 및 `libffi-dev` 를 설치합니다.
 
 ```bash
 sudo apt-get update
 sudo apt-get install -y libssl-dev libffi-dev
 ```
 
-Also install Python Dev for your version of Python.
+또한 Python 대상 버전에 따는 Python 개발 (관련 라이브러리)를 설치합니다.
 
 Python 2:
 
@@ -219,13 +218,13 @@ Python 3:
 sudo apt-get install -y python3-dev
 ```
 
-Ubuntu 15 may require `build-essential` also:
+Ubuntu 15 는 `build-essential` 또한 필요로 할 수도 있습니다:
 
 ```bash
 sudo apt-get install -y build-essential
 ```
 
-### Example Errors
+### 오류 예시
 
 ```
 Downloading cffi-1.5.2.tar.gz (388kB)
@@ -251,28 +250,28 @@ error: command 'x86_64-linux-gnu-gcc' failed with exit status 1
 Failed building wheel for cryptography
 ```
 
-See Stack Overflow question - [Failed to install Python Cryptography package with PIP and setup.py](http://stackoverflow.com/questions/22073516/failed-to-install-python-cryptography-package-with-pip-and-setup-py)
+Stack Overflow 질문을 살펴봅니다 - [PIP 및 setup.py를 통한 Python Cryptography 패키지 설치 실패](http://stackoverflow.com/questions/22073516/failed-to-install-python-cryptography-package-with-pip-and-setup-py)
 
-## Uninstall
+## 설치 제거
 
-If you used the script at https://aka.ms/InstallAzureCli to install the CLI, you can uninstall it with these steps.
+https://aka.ms/InstallAzureCli 스크립트를 사용하여 CLI를 설치한 경우, 다음 단계를 통해 설치 제거가 가능합니다.
 
-1. Remove the installed files.
+1. 설치한 파일을 삭제합니다.
 
    ```bash
    rm -r <install location>/lib/azure-cli
    rm <install location>/bin/az
    ```
 
-2. Delete the line `<install location>/lib/azure-cli/az.completion` from <install location>/.bash_profile.
+2. <install location>/.bash_profile 에서 `<install location>/lib/azure-cli/az.completion` 줄을 삭제합니다.
 
 > [!Note]
-> The default install location is /Users/<username>.
+> 디폴트 설치 경로는 /Users/<username> 입니다.
 
-If you used pip, apt-get, or Docker to install the CLI, use the same tool to uninstall it.
+pip, apt-get, 또는 Docker를 사용하여 설치한 경우, 동일한 도구를 사용하여 설치를 제거합니다.
 
-## Reporting issues and feedback
+## 이슈 보고 및 피드백
 
-If you encounter any bugs with the tool,
-file an issue in the [Issues](https://github.com/Azure/azure-cli/issues) section of our GitHub repo.
-To provide feedback from the command line, try the `az feedback` command.
+해당 도구를 사용하면서 버그 상황을 접한 경우에는,
+이슈를 GitHub 저장소 내 [Issues](https://github.com/Azure/azure-cli/issues) 에 보고합니다.
+명령어 라인에 대한 피드백을 작성하려면, `az feedback` 명령어를 사용합니다.
