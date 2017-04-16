@@ -329,13 +329,13 @@ None    None            /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/reso
 ```
 리소스 목록 및 출력 포맷에 대한 부가적인 방법에 대해 알고 싶다면 [output formats](format-output-azure-cli.md) 게시물을 살펴봅니다.
 
-## Querying resources and shaping outputs
+## 리소스 질의 및 출력 모양 다루기
 
-Often you want to be able to query for only those resources that meet a specific condition.  
+종종 특정 상태를 충족하는 자원에 대해서만 질의할 수 있는 기능을 원할 것입니다.
 
-The `list` command has built-in support
-that makes it easy to filter resources by Resource Group name.  For example, you can pass either a `--ResourceGroup` or `-g` parameter
-to a `list` command to only retrieve those resources within a specific resource group:
+`list` 명령어에서 리소스 그룹 명에 따라
+리소스를 필터링하기 쉽게 해 주는 내장된 지원이 있습니다. 예를 들어,  `--ResourceGroup` 또는 `-g` 매개변수 중 하나를
+`list` 명령어에 전달하여 특정 리소스 그룹 내에 있는 자원에 대해서만 가져오도록 할 수 있습니다:
 
 ```azurecli
 az vm list -g MyResouceGroup --output table
@@ -348,11 +348,11 @@ MyLinuxVM  MyResourceGroup  westus2
 MyWinVM    MyResourceGroup  westus2
 ```
 
-For even more powerful querying support, you can use the `--query` parameter to execute 
-a JMESPath query on the results of *any* `az` command.  JMESPath queries can be used both to filter as well
-as shape the output of any returned result.
+훨씬 더 강력한 질의 기능으로, `--query` 매개변수를 사용하여 *어떤* `az` 명령어에
+대해서라도 JMESPath 질의를 실행할 수 있습니다. JMESPath 질의는 필터링 뿐만 아니라
+반환되는 결과에 대한 출력 모양을 결정하는데도 사용 가능합니다.
 
-For example, execute the following command to query for any VM resource within any resource group that contains the letters "My":
+예를 들어, "My" 문자를 포함하는 임의의 리소스 그룹 내 VM 리소스를 질의하기 위해 다음 명령어를 실행합니다:
 
 ```azurecli
 az vm list --output table --query "[?contains(resourceGroup,'MY')]" 
@@ -365,8 +365,8 @@ MYRESOURCEGROUP  Succeeded            MyLinuxVM  westus2     XXXXXXXX-XXXX-XXXX-
 MYRESOURCEGROUP  Succeeded            MyWinVM    westus2     XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ```
 
-We could then choose to further refine the output by using the shaping capability of JMESPath queries to output different values
-as well.  For example, the following command retrieves the type of OS disk the VM is using to determine whether the OS is Linux or Windows based:
+더 나아가 서로 다른 값을 출력하는 JMESPath 모양을 결정하는 기능을 사용하여 결과를 개선하도록 선택할 수 있습니다.
+예를 들어, 다음 명령어는 OS가 Linux 또는 Windows 기반인지에 따라 VM 이 사용하는 OS 디스크 유형을 가져옵니다:
 
 ```azurecli
 az vm list --output table --query "[?contains(resourceGroup,'MY')].{ VMName:name,OSType:storageProfile.osDisk.osType }" 
@@ -379,18 +379,18 @@ MyLinuxVM  Linux
 MyWinVM    Windows
 ```
 
-The JMESPath support in Azure CLI is powerful.  Learn more about how to use it in our [query](query-azure-cli.md) article.
+Azure CLI에서 JMESPath 지원은 강력합니다. [query](query-azure-cli.md) 게시글에서 어떻게 사용하는지에 대해 자세히 배워봅니다.
 
-## Deleting resources
+## 리소스 삭제
 
-You can use the `delete` command within Azure CLI to delete the resources you no longer need. You can use the `delete` command with 
-any resource just like you can with the `create` command.
+Azure CLI에서 `delete` 명령을 사용하여 더 이상 필요로 하지 않는 자원을 삭제할 수 있습니다. `create` 명령어를 사용 가능하였던
+해당 리소스에 `delete` 명령어를 비슷하게 사용할 수 있습니다.
 
 ```azurecli
 az vm delete -n MyLinuxVM -g MyResourceGroup
 ```
 
-By default the CLI prompts to confirm deletion.  You can suppress this prompt for automated scripts.
+디폴트로 CLI는 삭제할 것인지를 확인하는 프롬프트를 나타냅니다. 자동화를 위한 스크립트에서는 해당 프롬프트를 강제할 수 있습니다.
 
 ```Output
 Are you sure you want to perform this operation? (y/n): y
@@ -399,8 +399,8 @@ EndTime                           Name                                  StartTim
 2017-02-19T02:35:56.678905+00:00  5b74ab80-9b29-4329-b483-52b406583e2f  2017-02-19T02:33:35.372769+00:00  Succeeded
 ```
 
-You can also use the `delete` command to delete many resources at a time. For example, the following command deletes all the 
-resources in the "MyResourceGroup" resource group that we've used for all the samples in this Get Started tutorial.
+`delete` 명령어를 여러 리소스를 동시에 삭제하는데도 사용 가능합니다. 예를 들어, 다음 명령어는 해당 시작해보기 튜토리얼 내 모든
+예제에서 사용하였던 "MyResourceGroup" 리소스 그룹 내 모든 리소스를 삭제합니다.
 
 ```azurecli
 az group delete -n MyResourceGroup
@@ -412,45 +412,44 @@ Are you sure you want to perform this operation? (y/n): y
 
 ## Get samples
 
-To learn more about ways to use the Azure CLI, check out our most common scripts for
-[Linux VMs](/azure/virtual-machines/virtual-machines-linux-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json),
-[Windows VMs](/azure/virtual-machines/virtual-machines-windows-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json), 
+Azure CLI를 사용하는 방법에 대해 자세히 살펴보려면, 다음에서 가장 일반적인 스크립트를 살펴봅니다: [Linux VMs](/azure/virtual-machines/virtual-machines-linux-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json),
+[Windows VMs](/azure/virtual-machines/virtual-machines-windows-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json),
 [Web apps](/azure/app-service-web/app-service-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json),
-and [SQL Database](/azure/sql-database/sql-database-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json).
+[SQL Database](/azure/sql-database/sql-database-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json).
 
-## Read the API reference docs
+## API 레퍼런스 문서 읽기
 
 [API reference](/cli/azure)
 
-## Get help
+## 도움 얻기
 
-The Azure CLI has built-in help documentation, which matches our web documentation that you can run from the command line:
+Azure CLI는 내장된 도움말 문서가 있으며, 명령어 라인에서 실행 가능하고 웹 문서와 대응합니다:
 
 ```azurecli
 az [command-group [command]] -h
 ```
 
-For example, to see what commands and subgroups are available for VMs, use:
+예를 들어, VM에서 사용 가능한 명령어 및 서브그룹을 살펴보려면, 다음과 같이 사용합니다:
 
 ```azurecli
 az vm -h
 ```
 
-To get help with the command to create a VM, use:
+VM을 생성하는 명령어에 대한 도움을 얻으려면, 다음과 같이 사용합니다:
 
 ```azurecli
 az vm create -h
 ```
 
-## Switch from Azure CLI 1.0
+## Azure CLI 1.0에서 전환하기
 
-If you already know how to use Azure CLI 1.0 (azure.js),
-you'll notice places where the commands aren't quite the same.
-Sometimes the commands to perform a task are significantly different.
-To help you make the switch from Azure CLI 1.0 to Azure CLI 2.0,
-we've started this [command mapping](https://github.com/Azure/azure-cli/blob/master/doc/azure2az_commands.rst).
+이미 Azure CLI 1.0 (azure.js)를 사용하는 방법을 알고 있는 경우,
+명령어가 어디있는지에 대한 위치가 완전히 동일하지는 않다는 점을 발견하였을 것입니다.
+때때로 작업을 수행하는 명령어는 상당히 달라져 있습니다.
+Azure CLI 1.0 에서 Azure CLI 2.0로 전환하는 데 있어 도움을 제공하기 위해,
+[command mapping](https://github.com/Azure/azure-cli/blob/master/doc/azure2az_commands.rst) 작업을 시작하였습니다.
 
-## Send us your feedback
+## 피드백 보내기
 
 ```azurecli
 az feedback
