@@ -226,14 +226,14 @@ az appservice web create -n MyWebApp43433 -g MyResourceGroup --plan MyAppService
 
 ```
 리소스 유형                 Azure CLI 생성 명령어
--------------               ------------------------
+-------------           ------------------------
 리소스 그룹                 az group create
 가상 컴퓨터                 az vm create
 가상 네트워크               az network vnet create
 로드 밸린서                 az network lb create
 관리 디스크                 az disk create
 스토리지 계정               az storage account create
-가상 컴퓨터 가용성 집합     az vmss create
+가상 컴퓨터 크기 집합       az vmss create
 Azure 컨테이너 서비스       az acs create
 Web App                     az appservice web create
 SQL 데이터베이스 서버       az sql server create
